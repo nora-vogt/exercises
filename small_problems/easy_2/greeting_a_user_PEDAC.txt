@@ -1,0 +1,49 @@
+Write a program that will ask for user's name. The program will then greet the user. If the user writes "name!" then the computer yells back to the user.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - User's name (String)
+      - either on its own
+      - or ending with !
+  Outputs: 
+    - A string greeting the user, either:
+      - Normal cased-greeting
+      - Up-cased greeting if name ends with !
+
+  Explicit Rules:
+    - Ask for the user's name
+    - If the user enters their name followed by a !, print an upcased greeting
+
+  Implicit Rules:
+
+  Questions:
+
+  Mental Model:
+  Get the user's name from the user.
+  Check to see if the name ends in a !
+    - If yes, print an upcased greeting
+    - If no, print a normal cased greeting.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+*Example 1:*
+  What is your name? Bob
+  Hello Bob.
+
+* Example 2: *
+What is your name? Bob!
+HELLO BOB. WHY ARE WE SCREAMING?
+
+
+D (Data Structure)  +++++++++++++++++++++++
+  Strings
+
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Initialize a variable 'name' to store the user's name
+  2. Get the user's name from the user
+  3. Check to see if the user's name ends in a '!'
+    1. If yes:
+      - Print an upcased greeting
+    2. If no:
+      - Print a regular cased greeting
+C (Code with Intent)  +++++++++++++++++++++++

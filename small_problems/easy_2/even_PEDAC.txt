@@ -1,0 +1,36 @@
+Print all even numbers from 1 to 99, inclusive, to the console, with each number on a separate line.
+
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs: 
+    - None
+  Outputs: 
+    - All even numbers from 1 to 99, inclusive
+
+  Explicit Rules:
+    - Numbers must be printed on separate lines
+    - Range to print includes 1 and 99
+    - Print only even numbers
+  Implicit Rules:
+    - Don't do anything with odd numbers
+
+  Questions:
+  Mental Model:
+    Create a collection containing the numbers 1-99, check if the number is even, and if so, print it on a newline.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  2
+  4
+  6
+
+D (Data Structure)  +++++++++++++++++++++++
+  Integers
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Create an inclusive range of 1-99
+  2. Iterate through the range, one number at a time
+  3. Check if the number is even
+    A. If yes, print the number
+    B. If no, do nothing
+
+C (Code with Intent)  +++++++++++++++++++++++

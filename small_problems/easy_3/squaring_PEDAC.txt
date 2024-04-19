@@ -1,0 +1,35 @@
+Using the multiply method from the "Multiplying Two Numbers" problem, write a method that computes the square of its argument (the square is the result of multiplying a number by itself).
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - A number
+
+  Outputs: 
+    - A number
+
+  Explicit Rules:
+    - Use the multiply method from previous assignment
+    - The square is the result of multiplying a number by itself
+
+  Implicit Rules:
+    - Squaring a negative number results in a positive number
+
+  Questions:
+  - 
+
+  Mental Model:
+   Use the previously defined multiply method to multiply a number by itself to compute the square.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  square(5) == 25
+  square(-8) == 64
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Call the multiply method to compute the square
+    2. Pass the argument twice as both parameters
+  2. Return the square
+
+C (Code with Intent)  +++++++++++++++++++++++

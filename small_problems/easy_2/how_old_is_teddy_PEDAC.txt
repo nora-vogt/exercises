@@ -1,0 +1,45 @@
+Build a program that randomly generates and prints Teddy's age. To get the age, you should generate a random number between 20 and 200.
+
+Example Output:
+Teddy is 69 years old!
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - nothing?
+  Outputs: 
+    - A random number between 20 and 200, interpolated in a string
+
+  Explicit Rules:
+    - Interpolate the results in a string: "Teddy is X years old!"
+    - The age number must be generated randomly
+    - Print the string to the screen
+
+  Implicit Rules:
+    - None
+
+  Questions:
+  - Does the valid range include or exclude 20 and 200?
+
+  Mental Model:
+  Generate a random number between 20 and 200, interpolate that number into a string describing Teddy's age, print the string to the screen.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+
+Teddy is 69 years old!
+
+If inclusive:
+Teddy is 20 years old!
+
+If exclusive:
+Teddy is 199 years old!
+
+
+D (Data Structure)  +++++++++++++++++++++++
+  String
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Initialize a variable 'age', assign a random number between 20 and 200 as the value. (I will choose inclusive)
+  2. Interpolate age into a string as Teddy's age
+  3. Print the string
+
+C (Code with Intent)  +++++++++++++++++++++++

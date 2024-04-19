@@ -1,0 +1,54 @@
+Write a program that prompts the user for two positive integers, and then prints the results of the following operations on those two numbers: addition, subtraction, product, quotient, remainder, and power. Do not worry about validating the input.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - None
+  Outputs: 
+    - For two integers, the results of:
+      - addition
+      - subtraction
+      - product
+      - quotient
+      - remainder
+      - power
+
+  Explicit Rules:
+    - User must enter two integers
+    - Do not need to validate input
+    
+  Implicit Rules:
+    - First entered integer will be the first operand
+    - Second entered integer will be the second operand
+    - Results of each operation should be shown on separate lines
+    - Print both the whole mathematical statement and the result
+
+  Questions:
+  Mental Model:
+    Ask the user for two numbers. The first entered number will be the first operand, the second will be the second operand. Computer and show the results for all listed mathemetical operations on separate lines.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+
+  ==> Enter the first number:
+  23
+  ==> Enter the second number:
+  17
+  ==> 23 + 17 = 40
+  ==> 23 - 17 = 6
+  ==> 23 * 17 = 391
+  ==> 23 / 17 = 1
+  ==> 23 % 17 = 6
+  ==> 23 ** 17 = 141050039560662968926103
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask the user to enter an integer, store input in `first_num`
+  2. Ask the user to enter a second integer, store input in `second_num`
+  3. Compute and print the result of addition
+  4. Compute and print the result of subtraction
+  5. Compute and print the result of multiplication
+  6. Compute and print the result of division
+  7. Compute and print the result of remainder
+  8. Computer and print the result of raising to power
+
+C (Code with Intent)  +++++++++++++++++++++++

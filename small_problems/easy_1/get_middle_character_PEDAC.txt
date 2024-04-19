@@ -1,0 +1,50 @@
+Write a method that takes a non-empty string argument, and returns the middle character or characters of the argument. If the argument has an odd length, you should return exactly one character. If the argument has an even length, you should return exactly two characters.
+
+P  (Understand the Problem)
+  Inputs: A non-empty String argument
+  Outputs: A String containing either one or two characters
+
+  Explicit Rules:
+    - Output must be the middle character or character from the input string
+    - If input string has an odd length -> return 1 character
+    - If input string has an even length -> return 2 characters
+    - Input string must be non-empty
+  Implicit Rules:
+    - If the string is only 1 character long, return that character.
+    - If the strign is only 2 characters long, return both characters.
+
+  Questions:
+    - What should happen with the method if it is called with an empty string? (Not anwered in test cases.)
+
+  Mental Model:
+    - Write a method that accepts one string argument. Check the length of the argument. If the length is an odd number, return the 1 middle character from the string. If the length is an even number, return the 2 middle characters from the string.
+
+E (Examples & Test Cases)
+
+center_of('I love ruby') == 'e'  # length == 11
+center_of('Launch School') == ' ' # length == 13
+center_of('Launch') == 'un' # length == 6
+center_of('Launchschool') == 'hs' # length == 12
+center_of('x') == 'x'   # length == 1
+
+I'm adding:
+center_of('xo') == 'xo'  # length == 2
+center_of('') == ?????? 
+
+
+D (Data Structure)
+  - Output will be a String
+
+A (Algorithm)
+  1. Define a method that takes one, non-empty string argument.
+    A. Return from the method if string is empty
+  2. Define a variable 'center_index' equal to string.length / 2
+  3. Check the length of the argument
+    A. If length is odd:
+      1. Middle character will be at center_index
+      2. Select and return that character
+    B. If length is even:
+      1. Find two middle characters by taking center_index, and the character at (center_index - 1)
+      2. Select and return the numbers at both indexes
+
+C (Code with Intent)

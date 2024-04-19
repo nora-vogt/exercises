@@ -1,0 +1,71 @@
+Write a program that solicits 6 numbers from the user, then prints a message that describes whether or not the 6th number appears amongst the first 5 numbers.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - None
+  Outputs: 
+    - A string, describing the results
+    - An array (of the first 5 user-entered numbers)
+    - An integer (the last user-entered number)
+
+  Explicit Rules:
+    - The user should enter 6 numbers
+    - The program should check if the 6th number appears in the first 5
+  
+  Implicit Rules:
+    - The first 5 entered numbers should be stored in an array
+
+  Questions:
+  
+
+  Mental Model:
+  Ask the user to enter six numbers. The first 5 numbers will be stored in an array for comparison. The 6th number will be the number to compare. Check to see if the 6th number matches any of the first 5 numbers entered, and print the outcome accordingly.
+
+E (Examples & Test Cases)  +++++++++++++++++++++++
+*** Example 1 ***
+  ==> Enter the 1st number:
+  25
+  ==> Enter the 2nd number:
+  15
+  ==> Enter the 3rd number:
+  20
+  ==> Enter the 4th number:
+  17
+  ==> Enter the 5th number:
+  23
+  ==> Enter the last number:
+  17
+  The number 17 appears in [25, 15, 20, 17, 23].
+
+*** Example 2 ***
+  ==> Enter the 1st number:
+  25
+  ==> Enter the 2nd number:
+  15
+  ==> Enter the 3rd number:
+  20
+  ==> Enter the 4th number:
+  17
+  ==> Enter the 5th number:
+  23
+  ==> Enter the last number:
+  18
+  The number 18 does not appear in [25, 15, 20, 17, 23].
+
+D (Data Structure)  +++++++++++++++++++++++
+  An Array
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Initialize variable 'numbers` to hold the first 5 user entered numbers
+  2. Ask the user to enter a number
+  3. Store that number in the 'numbers' array
+  4. Repeat steps 2-3 four more times, until 5 numbers have been collected
+  5. Ask the user to enter the last number, store in variable 'last_number`
+  6. Iterate through the numbers in `numbers`, one by one:
+    1. Check if the current number matches the `last_number`
+    2. If any number matches:
+      - Print a positive match string
+    3. If no number matches:
+      - Print a negative match string
+
+C (Code with Intent)  +++++++++++++++++++++++

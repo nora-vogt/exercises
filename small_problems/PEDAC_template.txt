@@ -1,0 +1,30 @@
+
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+
+
+  Outputs: 
+    - 
+
+  Explicit Rules:
+    - 
+
+  Implicit Rules:
+    - 
+
+  Questions:
+  - 
+
+  Mental Model:
+   
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+
+
+D (Data Structure)  +++++++++++++++++++++++
+
+
+A (Algorithm)  +++++++++++++++++++++++
+
+C (Code with Intent)  +++++++++++++++++++++++

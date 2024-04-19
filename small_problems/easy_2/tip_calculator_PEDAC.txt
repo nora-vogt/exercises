@@ -1,0 +1,55 @@
+Create a simple tip calculator. The program should prompt for a bill amount and a tip rate. The program must compute the tip and then display both the tip and the total amount of the bill.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs: 
+  - Bill total (a number)
+  - Tip percentage (a number)
+
+  Outputs: 
+  - Tip dollar amount (Float)
+  - Total bill dollar amount (Float)
+
+  Explicit Rules:
+  - Program should ask for both bill amount and tip rate
+  - Program should calculate the tip
+  - Program should output both the tip amount and bill total
+
+  Implicit Rules:
+  - Bill total is the sum of original bill + tip amount in dollars
+  - To calculate the tip:
+    - Convert tip percentage to decimal
+    - Multiply bill amount * tip decimal
+
+  Questions:
+  
+
+  Mental Model:
+  Create a program that asks the user for their bill amount and tip percentage. Calculate the tip amount, then print both the tip amount and total bill including tip.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+
+What is the bill? 200
+What is the tip percentage? 15
+
+The tip is $30.0
+The total is $230.0
+
+
+D (Data Structure)  +++++++++++++++++++++++
+  Numbers (floats and integers)
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask the user for the amount of their bill
+    1. Store this amount in variable 'bill'
+    2. Convert the bill amount to a Float
+  2. Ask the user for their tip percentage
+    1. Store this percentage in variable 'tip_percentage'
+    2. Convert percentage to a Float
+  3. Convert tip percentage to decimal, store in variable 'tip_rate'
+    1. Do this by: tip_percentage / 100
+  4. Calculate the amount of the tip, store this result in a variable 'tip_amount'.   tip_amount = bill * tip_rate
+  5. Print the tip amount
+  6. Print the total bill amount (add tip_amount to bill)
+
+
+C (Code with Intent)  +++++++++++++++++++++++

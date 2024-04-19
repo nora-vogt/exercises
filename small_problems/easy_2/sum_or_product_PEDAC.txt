@@ -1,0 +1,58 @@
+Write a program that asks the user to enter an integer greater than 0, then asks if the user wants to determine the sum or product of all numbers between 1 and the entered integer.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - From user, an integer greater than 0 (Integer)
+    - From user, choice of sum or product (string)
+  Outputs: 
+    - Sum of all numbers between 1 and entered integer (Integer)
+
+  Explicit Rules:
+    - Ask the user for a number
+    - Entered number must be an Integer
+    - Entered number must be greater than zero
+    - Ask user to determine sum or product
+
+  Implicit Rules:
+    - Sum is determined by adding every number between 1 and Integer
+    - Product is determined by multipluing ever number between 1 and Integer
+
+  Questions:
+    - What should happen if user enters an invalid number?
+    - Or invalid computation?
+
+  Mental Model:
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  >> Please enter an integer greater than 0:
+  5
+  >> Enter 's' to compute the sum, 'p' to compute the product.
+  s
+  The sum of the integers between 1 and 5 is 15.
+
+
+  >> Please enter an integer greater than 0:
+  6
+  >> Enter 's' to compute the sum, 'p' to compute the product.
+  p
+  The product of the integers between 1 and 6 is 720.
+
+D (Data Structure)  +++++++++++++++++++++++
+  Integer
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask user to enter a whole number greater than zero, store that number in variable 'number'
+  2. Ask user to enter sum or product, store that choice in variable 'calculation_choice'
+  3. If calculation_choice
+    A: == 's', compute the sum:
+      1. Initialize variable 'sum' to zero, to reflect the sum
+      2. Iterate through all numbers between 1 and number
+        A. Add the value of each number to sum
+      3. Print the sum
+    B: == 'p', compute the product
+      1. Initialize variable 'product' to 1, to reflect the product
+      2. Iterate through all numbers between 1 and number
+        A. Multiply number by product, and add that value to product
+      3. Print the product
+
+C (Code with Intent)  +++++++++++++++++++++++

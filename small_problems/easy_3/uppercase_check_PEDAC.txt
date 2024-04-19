@@ -1,0 +1,43 @@
+Write a method that takes a string argument, and returns true if all of the alphabetic characters inside the string are uppercase, false otherwise. Characters that are not alphabetic should be ignored.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - A string
+
+
+  Outputs: 
+    - A Boolean, true if all alphabetic characters in string are uppercase, false otherwise
+
+  Explicit Rules:
+    - Non-alphabetic characters should be ignored
+    - A string with lowercase characters should return false
+
+  Implicit Rules:
+    - An empty string should return true
+    - Since non-alphabetic characters are ignored, a string containing only whitespace should return true
+
+  Questions:
+
+  Mental Model:
+   Check only the alphabetic characters in a string. If they are all uppercase, return true. If not, return false.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  uppercase?('t') == false
+  uppercase?('T') == true
+  uppercase?('Four Score') == false
+  uppercase?('FOUR SCORE') == true
+  uppercase?('4SCORE!') == true
+  uppercase?('') == true
+
+D (Data Structure)  +++++++++++++++++++++++
+
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Collect only the alphabetic characters in a new string, save in variable 'alphabetic_chars'
+  2. Iterate through alphabetic_chars, character by character
+    1. Compare the current character to the upcased version of the character
+    2. If the values are equal, do nothing
+    3. If the values are not equal, return false
+  3. After iterating, if the method has not returned, return true
+
+C (Code with Intent)  +++++++++++++++++++++++

@@ -1,0 +1,41 @@
+ Write a method that returns true if its integer argument is palindromic, false otherwise. A palindromic number reads the same forwards and backwards.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - An integer
+
+  Outputs: 
+    - A Boolean, true if integer is palindromic, false otherwise
+
+  Explicit Rules:
+    - A palindromic number reads the same forwards and backwards
+
+  Implicit Rules:
+    - A single-digit integer should return true - is palindromic
+
+  Questions:
+    - 
+
+  Mental Model:
+   Determine if the given integer is the same backwards as it is forwards. Return true if so, false otherwise.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  palindromic_number?(34543) == true
+  palindromic_number?(123210) == false
+  palindromic_number?(22) == true
+  palindromic_number?(5) == true
+
+  123210 => 012321
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+
+A (Algorithm)  +++++++++++++++++++++++
+  1 Create a variable to save the reversed number, `reversed_int_arr`
+  2. Iterate through the given integer, digit by digit
+    1. Add the current digit to the BEGINNING of reversed_int_arr
+  3. After finished iterating, join the array into a string
+  4. Convert the string back to an integer
+  5. Compare the value of reversed_int_arr and the given integer. If they are equal, return true. Otherwise, return false.
+
+C (Code with Intent)  +++++++++++++++++++++++

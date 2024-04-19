@@ -1,0 +1,46 @@
+Write a method that returns true if the string passed as an argument is a palindrome, false otherwise. A palindrome reads the same forward and backward. For this exercise, case matters as does punctuation and spaces.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+  - String
+
+  Outputs: 
+    - Boolean
+
+  Explicit Rules:
+    - Case must be same to be a palindrome
+    - Punctuation must be the same to be a palindrome
+    - Spaces must be the same to be a palindrome
+
+  Implicit Rules:
+    - 
+
+  Questions:
+  - 
+
+  Mental Model:
+   Compare the argument string to a reversed version of the argument string. If the string values are exactly the same, return true. Otherwise, return false.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+
+  palindrome?('madam') == true
+  palindrome?('Madam') == false          # (case matters)
+  palindrome?("madam i'm adam") == false # (all characters matter)
+  palindrome?('356653') == true
+
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Reverse the string, save it in a variable "reversed_string"
+  2. compare the argument string to reversed_string
+    1. if values are equal, return true
+    2. otherwise, return false
+
+For a method that works with Strings or Arrays - both have indices
+1. Create an iterator variable to reflect the index - 'iterator'
+2. Loop through the object, one element at a time 
+3. 
+
+C (Code with Intent)  +++++++++++++++++++++++

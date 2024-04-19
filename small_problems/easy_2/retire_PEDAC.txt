@@ -1,0 +1,52 @@
+Build a program that displays when the user will retire and how many years she has to work till retirement.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - User's age (number)
+    - Target retirement age (number)
+  Outputs: 
+    - Current year (number)
+    - Calculated retirement date (number)
+    - Years of work left (number)
+
+  Explicit Rules:
+    - Display the year the user will retire
+    - Display how many years of work left until retirement
+
+  Implicit Rules:
+    - Ask user for age
+    - Ask user for desired retirement age
+    - Display current year
+
+  Questions:
+  
+
+  Mental Model:
+  Ask the user for their current age and desired age to retire. Based on the current year, calculate what year the user will retire and how many years of work they have left. Print all three pieces of information.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  What is your age? 30
+  At what age would you like to retire? 70
+
+  It's 2016. You will retire in 2056.
+  You have only 40 years of work to go!
+
+D (Data Structure)  +++++++++++++++++++++++
+  - Integers
+  - Use Time
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask user for age, store in variable 'age', convert to Integer
+  2. Ask user for desired retirement age, store in variable 'retirement_age', convert to Integer
+  3. Initialize variable 'years_to_retirement', and calculate the years left until retirement
+    1. years_to_retirement = retirement_age - age 
+  4. Initialize a variable 'current_year' equal to the current year
+  5. Initialize 'retirement_date' and calculate the target retirement year
+    1. retirement_date = current_year + years to retirement
+  6. Print output to user
+    1. Current year
+    2. Year of retirement
+    3. Years left of work
+
+
+C (Code with Intent)  +++++++++++++++++++++++

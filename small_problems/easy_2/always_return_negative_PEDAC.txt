@@ -1,0 +1,38 @@
+Write a method that takes a number as an argument. If the argument is a positive number, return the negative of that number. If the number is 0 or negative, return the original number.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - A number
+  Outputs: 
+    - A number
+
+  Explicit Rules:
+    - If argument positive, return negative of that number
+    - If argument zero, return zero
+    - If argument is negative, return the original number
+
+  Implicit Rules:
+    - 
+
+  Questions:
+    - Should the method work for integers and floats?
+
+  Mental Model:
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  negative(5) == -5
+  negative(-3) == -3
+  negative(0) == 0      # There's no such thing as -0 in ruby
+
+D (Data Structure)  +++++++++++++++++++++++
+  Integers
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Define a method that takes one argument, a number
+  2. Check if the number is positive
+    A. If yes, convert the number to a negative and return that number
+      1. To convert a number to its negative, multiply it by -1
+    B. If number is equal to 0, return 0
+    C. If number is already negative, return that number
+
+C (Code with Intent)  +++++++++++++++++++++++

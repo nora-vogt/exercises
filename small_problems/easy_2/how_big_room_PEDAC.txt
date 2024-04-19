@@ -1,0 +1,49 @@
+Build a program that asks a user for the length and width of a room in meters and then displays the area of the room in both square meters and square feet.
+
+Note: 1 square meter == 10.7639 square feet
+
+Do not worry about validating the input at this time.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - Length of room in meters (a number)
+    - Width of room in meters (a number)
+  Outputs: 
+  - Interpolated into a string:
+    - Area of room in square meters (a Float)
+    - Area of room in square feet (a Float)
+    
+
+  Explicit Rules:
+    - Ask the user for length and width of room in meters
+    - 1 square meter == 10.7639 square feet
+    - Don't need to validate input
+
+  Implicit Rules:
+    - Square meters == length in meters x width in meters
+    - use puts to display prompts to user
+    - Round the square meter display to 2 decimal points
+    - Round the square feet display to 2 decimal points
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  Enter the length of the room in meters:
+  10
+  Enter the width of the room in meters:
+  7
+  The area of the room is 70.0 square meters (753.47 square feet).
+
+D (Data Structure)  +++++++++++++++++++++++
+  - Numbers - Integers and Floats
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask the user to enter room length in meters
+    1. Convert input to Float
+    2. Initialize a local variable 'length' and assign value of user input
+  2. Ask the user to enter room width in meters
+    1. Convert input to Float
+    2. Initialize a local variable 'width' and assign value of user input
+  3. Initialize variable 'square_meters', assign it to the value of calculating (length * witdh)
+  4. Initialize variable 'square_feet', assign it to the value of calculating (square_meters * 10.7639).
+  5. Print values of square_meters and square_feet interpolated into a string with data about room area.
+
+C (Code with Intent)  +++++++++++++++++++++++

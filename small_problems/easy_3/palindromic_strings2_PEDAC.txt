@@ -1,0 +1,42 @@
+Write another method that returns true if the string passed as an argument is a palindrome, false otherwise. This time, however, your method should be case-insensitive, and it should ignore all non-alphanumeric characters. If you wish, you may simplify things by calling the palindrome? method you wrote in the previous exercise.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - A string
+
+  Outputs: 
+    - A Boolean value
+
+  Explicit Rules:
+    - Method should be case-insensitive
+    - Method should ignore all non alpha-numeric characters (including spaces)
+
+  Implicit Rules:
+    - 
+
+  Questions:
+  - 
+
+  Mental Model:
+   
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  real_palindrome?('madam') == true
+  real_palindrome?('Madam') == true           # (case does not matter)
+  real_palindrome?("Madam, I'm Adam") == true # (only alphanumerics matter)
+  real_palindrome?('356653') == true
+  real_palindrome?('356a653') == true
+  real_palindrome?('123ab321') == false
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Create a variable to save the modified string, 'test_string'
+  1. Convert string to downcase, save in test_string
+  2. Remove all spaces and other non-alphanumeric characters from test_string
+  3. Compare test_string to test_string reversed
+    1. If values are equal, return true
+    2. If values are not equal, return false
+
+C (Code with Intent)  +++++++++++++++++++++++

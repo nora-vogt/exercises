@@ -1,0 +1,49 @@
+Write a program that will ask a user for an input of a word or multiple words and give back the number of characters. Spaces should not be counted as a character.
+
+P  (Understand the Problem) +++++++++++++++++++++++
+  Inputs:
+    - A user-entered string
+
+  Outputs: 
+    - A string containing integer number of characters
+
+  Explicit Rules:
+    - Spaces should not be counted as a character
+
+  Implicit Rules:
+    - User should enter input on same line as prompt
+    - Display the entered string in the output
+    - Removing whitespace should not mutate the original string
+
+  Questions:
+  - What should happen if a user enters an empty string?
+
+  Mental Model:
+     Ask the user to enter a string, store that response. Remove the spaces from the string, then count the number of characters in the string. Print the result to the screen.
+ 
+E (Examples & Test Cases)  +++++++++++++++++++++++
+  ** Example 1 **
+  Please write word or multiple words: walk
+  There are 4 characters in "walk".
+
+  ** Example 2 ** 
+  Please write word or multiple words: walk, don't run
+  There are 13 characters in "walk, don't run".
+
+  ** Example 3 ** (I'm choosing this in lieu of an answer)
+  Please write word or multiple words:
+  There are 0 characters in "". 
+
+D (Data Structure)  +++++++++++++++++++++++
+  None
+
+A (Algorithm)  +++++++++++++++++++++++
+  1. Ask user to enter a word / multiple words, create a variable `string` to store the response
+  2. Create a variable `string_with_no_spaces` to store the result of removing the whitespaces from the string
+    1. To remove whitespaces, iterate through the string character by character
+    2. Check if the value of the character is equal to " "
+      A: If yes, do nothing
+      B: If no, add the character to `string_with_no_spaces`
+  3. Print the number of characters in  `string_with_no_spaces`
+
+C (Code with Intent)  +++++++++++++++++++++++
