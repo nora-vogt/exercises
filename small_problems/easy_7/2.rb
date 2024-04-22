@@ -55,6 +55,16 @@ def letter_case_count(string)
   result
 end
 
+# Refactored
+# Using String#count with selectors
+def letter_case_count(string)
+  result = {}
+  result[:lowercase] = string.count('a-z')
+  result[:uppercase] = string.count('A-Z')
+  result[:neither] = string.count('^a-zA-Z')
+  result
+end
+
 # Second Solution
 def lowercase?(char)
   ('a'..'z').to_a.include?(char)
