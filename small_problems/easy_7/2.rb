@@ -58,11 +58,11 @@ end
 # Refactored
 # Using String#count with selectors
 def letter_case_count(string)
-  result = {}
-  result[:lowercase] = string.count('a-z')
-  result[:uppercase] = string.count('A-Z')
-  result[:neither] = string.count('^a-zA-Z')
-  result
+  {
+    lowercase: string.count('a-z'),
+    uppercase: string.count('A-Z'),
+    neither: string.count('^a-zA-Z')
+  }
 end
 
 # Second Solution
