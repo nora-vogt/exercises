@@ -1,3 +1,4 @@
+require 'pry'
 =begin
 Input: array of integers
 Output: Float (rounded to 3 decimal places)
@@ -49,6 +50,7 @@ end
 # LS Solution
 def show_multiplicative_average(numbers)
   product = 1.to_f
+  binding.pry
   numbers.each { |number| product *= number }
   average = product / numbers.size
   puts "The result is #{format('%.3f', average)}"
