@@ -44,6 +44,17 @@ def repeater(string)
   result
 end
 
+# Using String#gsub and RegEx
+def repeater(string)
+  #string.gsub(/(.)/, '\1\1') # OR
+  string.gsub(/./) { |match| match + match }
+end
+
+# Using Array#zip
+def repeater(string)
+  string.chars.zip(string.chars).join
+end
+
 
 p repeater('Hello') == "HHeelllloo"
 p repeater("Good job!") == "GGoooodd  jjoobb!!"
