@@ -50,17 +50,38 @@ Given a number, n
 
   # On each iteration, the array updates to include the two most recent fibonacci numbers
 
-def fibonacci(nth)
-  first, last = [1, 1]
-  3.upto(nth) do
-    first, last = [last, first + last]
-    p "first is #{first}, last is #{last}"
-  end
+# def fibonacci(nth)
+#   first, last = [1, 1]
+#   3.upto(nth) do
+#     first, last = [last, first + last]
+#     p "first is #{first}, last is #{last}"
+#   end
 
-  last
+#   last
+# end
+
+# def fibonacci(n)
+#   first, last = [1, 1]
+#   while n > 2
+#     next_num = first + last
+#     first, last = last, next_num
+#     n -= 1
+#   end
+#   last
+# end
+
+# Fibonacci with memoization
+CACHE = {}
+
+def fibonacci(n)
+  return 1 if n <= 2
+  return CACHE[n] if CACHE.keys.include?(n)
+  CACHE[n] = fibonacci(n - 1) + fibonacci(n - 2)
+  CACHE[n]
 end
 
+
 p fibonacci(7) == 13
-# p fibonacci(20) == 6765
-# p fibonacci(100) == 354224848179261915075
-# p fibonacci(100_001) # => 4202692702.....8285979669707537501
+p fibonacci(20) == 6765
+p fibonacci(100) == 354224848179261915075
+p fibonacci(100_001) # => 4202692702.....8285979669707537501
