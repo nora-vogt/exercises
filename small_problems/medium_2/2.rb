@@ -77,6 +77,17 @@ def block_word?(word)
   true
 end
 
+# Refactor(word)
+def block_word?(word)
+  word = word.upcase
+  LETTERS.none? do |letter1, letter2|
+    # word.include?(letter1) && word.include?(letter2) || 
+    # word.count(letter1) > 1 || word.count(letter2) > 1
+    # the word doesn't contain both letter1 and letter 2
+    # the word doesn't repeat either/or letter1, letter2 twice
+  end
+end
+
 # LS SOLUTION
 # Enumerable#none - returns true if the block returns a falsy value on each iteration. Aka: Returns true if the block doesn't return a truthy value for every iteration.
 
@@ -87,11 +98,11 @@ end
   # if the string contains a char from block more than once, block returns true
 
 
-BLOCKS = %w(BO XK DQ CP NA GT RE FS JW HU VI LY ZM).freeze
-def block_word?(string)
-  up_string = string.upcase
-  BLOCKS.none? { |block| up_string.count(block) >= 2}
-end
+# BLOCKS = %w(BO XK DQ CP NA GT RE FS JW HU VI LY ZM).freeze
+# def block_word?(string)
+#   up_string = string.upcase
+#   BLOCKS.none? { |block| up_string.count(block) >= 2}
+# end
 
 p block_word?('BUBBLE') == false
 p block_word?('BATCH') == true
