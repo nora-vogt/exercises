@@ -47,21 +47,21 @@ given an integer, number
     - if false: return true
 =end
 
-# def unique_digits?(number)
-#   digits = number.digits
-#   digits.none? { |digit| digits.count(digit) > 1 }
-# end
+def unique_digits?(number)
+  digits = number.digits
+  digits.none? { |digit| digits.count(digit) > 1 }
+end
 
-# def featured(number)
-#   if number >= 9_999_999_999
-#     return "There is no possible number that fulfills those requirements"
-#   end
+def featured(number)
+  if number >= 9_999_999_999
+    return "There is no possible number that fulfills those requirements"
+  end
 
-#   while number <= 9_999_999_999
-#     number += 1
-#     return number if number.odd? && number % 7 == 0 && unique_digits?(number)
-#   end 
-# end
+  while number <= 9_999_999_999
+    number += 1
+    return number if number.odd? && number % 7 == 0 && unique_digits?(number)
+  end 
+end
 
 # LS SOLUTION
  # given a number
@@ -74,6 +74,7 @@ given an integer, number
   # increment number by 14 (this gets us the subsequent odd multiple of 7)
   # break if number >= 9_876_543_210
 # return the error message
+# is max number that has unique digits
 
 def featured(number)
   number += 1

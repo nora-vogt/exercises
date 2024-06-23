@@ -113,28 +113,65 @@ end
   # 6 2 7 1 4 -> sort on first pass to -> 2 6 1 4 7
     # second pass, ignore the last item (7) because it has already been sorted
 
-def swap!(array, index)
-  array[index], array[index + 1] = array[index + 1], array[index]
-end
+# def swap!(array, index)
+#   array[index], array[index + 1] = array[index + 1], array[index]
+# end
 
+# def bubble_sort!(array)
+#   max_index = array.length - 1
+#   loop do
+#     swapped = false
+#     (0..max_index - 1).each do |index|
+#       if array[index] > array[index + 1]
+#         swap!(array, index)
+#         puts "last index swapped is #{index}" 
+#         swapped = true
+#       end
+#     end
+#     max_index -= 1
+#     puts "max index is #{max_index}"
+#     break unless swapped
+#   end
+#   array
+# end
+
+
+# Second step of optimization
+  # the last index where a swap occurs is the last index that needs to be checked
+  # using last index checked instead of a swapped flag
+
+# def bubble_sort!(array)
+#   max_index = array.length - 1
+#   loop do
+#     last_index_swapped = 0
+#     (0..max_index - 1).each do |index|
+#       if array[index] > array[index + 1]
+#         swap!(array, index)
+#         last_index_swapped = index
+#       end
+#     end
+#     max_index = last_index_swapped
+    
+#     break if max_index <= 0
+#   end
+#   array
+# end
+
+# refactor to use a different loop
 def bubble_sort!(array)
-  max_index = array.length- 1
-  loop do
-    swapped = false
+  max_index = array.length - 1
+  until max_index == 0
+    last_index_swapped = 0
     (0..max_index - 1).each do |index|
       if array[index] > array[index + 1]
-        swap!(array, index) 
-        swapped = true
+        swap!(array, index)
+        last_index_swapped = index
       end
     end
-    max_index -= 1
-    break unless swapped
+    max_index = last_index_swapped
   end
   array
 end
-
-# Second step of optimization
-    
 
 
 array = [5, 3]
