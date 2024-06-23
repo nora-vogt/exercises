@@ -158,16 +158,41 @@ end
 # end
 
 # refactor to use a different loop
+# def bubble_sort!(array)
+#   max_index = array.length - 1
+#   until max_index == 0
+#     last_index_swapped = 0
+#     (0..max_index - 1).each do |index|
+#       if array[index] > array[index + 1]
+#         swap!(array, index)
+#         last_index_swapped = index
+#       end
+#     end
+#     max_index = last_index_swapped
+#   end
+#   array
+# end
+
+# Changing order of comparison for swap - start at index 1 and compare to prior index
+  # mine was: start at index 0 and compare next element
+
+def swap!(array, prev_idx, current_idx)
+  array[current_idx], array[prev_idx] = array[prev_idx], array[current_idx]
+end
+
 def bubble_sort!(array)
   max_index = array.length - 1
-  until max_index == 0
+
+  until max_index < 1
     last_index_swapped = 0
-    (0..max_index - 1).each do |index|
-      if array[index] > array[index + 1]
-        swap!(array, index)
+
+    1.upto(max_index) do |index|
+      if array[index - 1] > array[index]
+        swap!(array, index - 1, index)
         last_index_swapped = index
       end
     end
+
     max_index = last_index_swapped
   end
   array
