@@ -90,7 +90,6 @@ def star(grid_size)
       puts line
       space_count += 1
     end
-
   end
 end
 
