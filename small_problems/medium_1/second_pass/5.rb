@@ -87,20 +87,24 @@ def diamond1(n)
 end
 
 # Refactor
-def diamond(n)
+def print_row2(n, star_count)
+  puts ('*' * star_count).center(n)
+end
+
+def diamond2(n)
   distance_from_center = n / 2
   star_count = 1
 
   distance_from_center.times do
-    puts ('*' * star_count).center(n)
+    print_row(n, star_count)
     star_count += 2
   end
 
-  puts ('*' * star_count)
+  print_row(n, star_count)
 
   distance_from_center.times do
     star_count -= 2
-    puts ('*' * star_count).center(n)
+    print_row(n, star_count)
   end
 
 end
@@ -156,6 +160,40 @@ Given a grid_size and a distance, distance_from_center (row of diamond)
 
 =end
 
+def print_row3(grid_size, distance_from_center)
+  number_of_stars = grid_size - (2 * distance_from_center)
+  stars = '*' * number_of_stars
+  puts stars.center(grid_size)
+end
+
+def diamond3(grid_size)
+  # get the distance from top line to the center
+  max_distance = (grid_size - 1) / 2
+
+  max_distance.downto(0) { |distance| print_row(grid_size, distance) }
+  1.upto(max_distance) { |distance| print_row(grid_size, distance) }
+end
+
+
+
+=begin
+# Further Exploration
+  # Modify solution to print only outline of diamond
+
+# Most of solution stays the same - need to change constructing the line
+  - whitespace and stars
+  - center the whitespace instead in a line filled with *
+  diamond(5)
+  - top / bottom rows are just 1 star, centered in grid size
+  - subseqent rows are stars at either end filled with whitespace in center * *
+
+  * 2 space - 1 star - 2 space
+ * * 1 space - 1 star -            1 space - 1 star - 1 space
+*   * 1 star - 3 space          - 1 star
+ * *
+  *
+=end
+
 def print_row(grid_size, distance_from_center)
   number_of_stars = grid_size - (2 * distance_from_center)
   stars = '*' * number_of_stars
@@ -170,4 +208,4 @@ def diamond(grid_size)
   1.upto(max_distance) { |distance| print_row(grid_size, distance) }
 end
 
-diamond(9)
+diamond(5)
