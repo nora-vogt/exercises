@@ -95,6 +95,7 @@ https://medium.com/launch-school/recursive-fibonnaci-method-explained-d82215c549
 It is important to note that, except for the case where we want to know what the values of fibonacci(0) or fibonacci(1) is, the final return value of the requested Fibonacci number will come from the following line of code in the method:
     fibonacci(number - 1) + fibonacci(number - 2)
 =end
+
 p fibonacci(1) == 1
 p fibonacci(2) == 1
 p fibonacci(3) == 2
