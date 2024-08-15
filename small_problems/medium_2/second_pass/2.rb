@@ -158,14 +158,34 @@ otherwise, return true
 
 # The code ends up being the same whether you use an array or a hash, because you can iterate through the hash, concatenate the k + v, and pass that string as the arg to count.
 =end
-BLOCKS2 = %w(BO XK DQ CP NA GT RE FS JW HU VI LY ZM)
+BLOCKS_ARR = %w(BO XK DQ CP NA GT RE FS JW HU VI LY ZM)
+
+def block_word4?(word)
+  upcased_word = word.upcase
+
+  BLOCKS_ARR.none? do |block|
+    upcased_word.count(block) >= 2
+  end
+end
+
+=begin
+Other student approach:
+- The number of blocks used should be equal to the length of the string
+- Count the number of blocks used
+  - iterate through the array of blocks
+  - check if the string includes the block (count >= 1)
+- Compare that count to length of string
+  - if equal, return true, otherwise false
+=end
 
 def block_word?(word)
   upcased_word = word.upcase
 
-  BLOCKS2.none? do |block|
-    upcased_word.count(block) >= 2
+  blocks_used = BLOCKS_ARR.count do |block|
+    upcased_word.count(block) >= 1
   end
+
+  blocks_used == word.size
 end
 
 p block_word?('BATCH') == true
