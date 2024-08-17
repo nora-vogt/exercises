@@ -65,6 +65,15 @@ def is_prime1(number)
   end
 end
 
+# Make the guard clause <= 1, to account for 0 and/or negative numbers
+def is_prime1(number)
+  return false if number <= 1
+
+  (2..number - 1).none? do |divisor|
+    number % divisor == 0
+  end
+end
+
 =begin
 # LS faster Solution
   # Instead of checking all possible divisors,
@@ -89,7 +98,7 @@ end
 
 # Refactor
 def is_prime(number)
-  return false if number == 1
+  return false if number <= 1
 
   (2..Math.sqrt(number)).none? do |divisor|
     number % divisor == 0
