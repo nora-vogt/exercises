@@ -91,13 +91,25 @@ def invalid_triangle?(angles)
   angles.any?(0) || angles.sum != 180 || angles.size != 3
 end
 
-def triangle(*angles)
+def triangle3(*angles)
   return :invalid if invalid_triangle?(angles)
 
   case angles.max <=> 90
   when 0 then :right
   when 1 then :obtuse
   else        :acute
+  end
+end
+
+# Or can just check on largest angle in a different way
+
+def triangle(*angles)
+  return :invalid if invalid_triangle?(angles)
+
+  case angles.max
+  when 90   then :right
+  when 91.. then :obtuse
+  else           :acute
   end
 end
 
