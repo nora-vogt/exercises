@@ -108,6 +108,7 @@ or can transform at both levels of iteration
   - outer level returns an array containing the new rows
 =end
 
+# works for 3x3, but not for matrices that aren't a square
 def transpose2(matrix)
   max_index = matrix[0].length - 1
 
@@ -118,6 +119,7 @@ def transpose2(matrix)
   end
 end
 
+# works for 3x3, but not for matrices that aren't a square
 def transpose(matrix)
   max_index = matrix[0].length - 1
   new_matrix = []
