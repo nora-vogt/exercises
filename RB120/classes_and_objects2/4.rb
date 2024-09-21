@@ -1,38 +1,41 @@
 =begin
-# Generic Greeting (Part 2)
+Using the class definition from step #3, let's create a few more people -- that is, Person objects.
 
-Using the following code, add two methods: ::generic_greeting and #personal_greeting. The first method should be a class method and print a greeting that's generic to the class. The second method should be an instance method and print a greeting that's custom to the object.
+If we're trying to determine whether the two objects contain the same name, how can we compare the two objects?
+  One solution is to create an instance method, `same_name?` that takes the name of the other person as an argument. Within that instance method, we can compare the values of `@name` for both instances using the getter method.
 
-- Define a class method using the `self` syntax.
-- Define an instance method, and within the method definition, interpolate the return value of the getter `name` into the string to be output.
-- For fun, we also will use `self` within the instance method to call the `#class` method, in order to share the class of the instance as part of our greeting.
-
-Notes:
-- Within class methods, we're can't access any data associated with the objects of the class themselves (their attributes/instance variables).
-- Class methods are generic actions that the class itself can perform.
+  Or, outside of the class, we can compare bob.name == rob.name
 =end
+class Person
+  attr_accessor :first_name, :last_name
 
-class Cat
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
+  def initialize(full_name)
+    parse_full_name(full_name)
   end
 
-  def self.generic_greeting
-    puts "Hello! I'm a cat!"
+  def name=(name)
+    parse_full_name(full_name)
   end
 
-  def self.speak # all cats meow, so makes sense for this to be a class method
-    puts "Meow!"
+  def name
+    "#{first_name} #{last_name}".strip
   end
 
-  def personal_greeting
-    puts "Hello! I'm a #{self.class} and my name is #{name}!"
+  def same_name?(other_person)
+    self.name == other_person.name
+  end
+
+  private
+
+  def parse_full_name(full_name)
+    parts = full_name.split
+    self.first_name = parts.first
+    self.last_name = parts.size > 1 ? parts.last : ''
   end
 end
 
-kitty = Cat.new('Sophie')
+bob = Person.new('Robert Smith')
+rob = Person.new('Robert Smith')
 
-Cat.generic_greeting
-kitty.personal_greeting
+p bob.name == rob.name # true
+p bob.same_name?(rob)  # true

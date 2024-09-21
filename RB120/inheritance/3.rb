@@ -1,0 +1,29 @@
+=begin
+#Only Pass the Year
+
+Using the following code, allow Truck to accept a second argument upon instantiation. Name the parameter bed_type and implement the modification so that Car continues to only accept one argument.
+=end
+
+class Vehicle
+  attr_reader :year
+
+  def initialize(year)
+    @year = year
+  end
+end
+
+class Truck < Vehicle
+  attr_accessor :bed_type
+
+  def initialize(year, bed_type)
+    super(year)   # only the `year` will be passed to `Vehicle#initialize`
+    @bed_type = bed_type
+  end
+end
+
+class Car < Vehicle
+end
+
+truck1 = Truck.new(1994, 'Short')
+puts truck1.year
+puts truck1.bed_type
