@@ -1,30 +1,17 @@
 =begin
-# Number Guesser Part 1
-Create an object-oriented number guessing class for numbers in the range 1 to 100, with a limit of 7 total_guesses per game. The game should play like this:
+In the previous exercise, you wrote a number guessing game that determines a secret number between 1 and 100, and gives the user 7 opportunities to guess the number.
 
-loop
-  - display remaining total_guesses
-  - ask user for number between 1-100
-    - display error message if outside of range
-  - check guess
-    - if too low -> display too low
-    - if too high -> display too high
-    - if win: set game_won? to true break from loop
-  - Display if guess is too low or two high
-  - decrement remaining total_guesses
-  break if remaining total_guesses == 0
-end
+Update your solution to accept a low and high value when you create a GuessingGame object, and use those values to compute a secret number for the game. You should also change the number of guesses allowed so the user can always win if she uses a good strategy. You can compute the number of guesses with:
 
-if game_won?
-  display game won
-otherwise
-  you lost
+Range#cover? is like #include?, but faster for ranges.
 =end
 
 class GuessingGame
-  def initialize
-    @winning_number = rand(101)
-    @total_guesses = 7
+  def initialize(low, high)
+    @low = low
+    @high = high
+    @winning_number = (@low..@high).to_a.sample
+    @total_guesses = calculate_guesses
   end
 
   def play
@@ -38,11 +25,18 @@ class GuessingGame
     loop do
       display_remaining_guesses
       ask_for_guess
-      # break if correct_guess?
       display_guess_result
       decrement_total_guesses
       break if correct_guess? || no_guesses_remaining?
     end
+  end
+
+  def size_of_range
+    (@low..@high).size
+  end
+  
+  def calculate_guesses
+    (Math.log2((@low..@high).size).to_i + 1)
   end
 
   def display_remaining_guesses
@@ -52,17 +46,17 @@ class GuessingGame
 
   def ask_for_guess
     loop do
-      print "Enter a number between 1 and 100: "
+      print "Enter a number between #{@low} and #{@high}: "
       @guess = gets.to_i
-      break if (1..100).cover?(@guess)
+      break if (@low..@high).cover?(@guess)
       print "Invalid guess. "
     end
   end
 
   def display_guess_result
     result = case @guess
-            when (1...@winning_number)    then "Your guess is too low."
-            when (@winning_number+1..100) then "Your guess is too high."
+            when (@low...@winning_number)    then "Your guess is too low."
+            when (@winning_number+1..@high) then "Your guess is too high."
             else                               "That's the number!"
             end
 
@@ -92,5 +86,5 @@ class GuessingGame
   end
 end
 
-game = GuessingGame.new
+game = GuessingGame.new(501, 1500)
 game.play
