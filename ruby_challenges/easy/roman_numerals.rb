@@ -71,11 +71,11 @@ number: 2839
 number: 839
 
 DATA STRUCTURES:
-- conversion hash:
+start: integer
 
+conversion hash (keys are integers, values are corresponding roman numeral)
 
-
-
+end: string of roman numerals
 
 ALGO
 # initialize - takes an integer
@@ -83,12 +83,14 @@ ALGO
 
 # to_roman
 - set roman_string = ''
-- set remainder = @number
+- set number_to_convert = @number
 
 loop while remainder > 0
-  - get largest base number in conversion hash
-    - iterate through hash conversion values keys - #find
-      - select the first value that is less than or equal to current remainder
+  - determine the biggest divisor and associated roman numeral
+    - select k/v pairs in DECIMAL_TO_ROMAN where key is less than equal to number_to_convert (#select)
+    - select the pair with largest key (#max)
+    - assign key to biggest_divisor, value to numeral
+
   - get roman numeral associated with that key in hash, set to current_numeral
   - calculate quotient and remainder of dividing that number - [Q, R]
   - numeral * quotient, add to result string
@@ -105,28 +107,30 @@ class RomanNumeral
     1 => 'I'
   }
 
+  attr_reader :number
+
   def initialize(number)
     @number = number
   end
 
   def to_roman
     roman_numeral = ''
-    remainder = @number
+    to_convert = @number
 
-    while remainder > 0
-      biggest_divisor = DECIMAL_TO_ROMAN.keys.find { |n| n <= remainder }
-      current_numeral = DECIMAL_TO_ROMAN[biggest_divisor]
-      quotient, remainder = remainder.divmod(biggest_divisor)
-      roman_numeral << (current_numeral * quotient)
+    while to_convert > 0 # works with DECIMAL_TO_ROMAN in any order
+      biggest_divisor, numeral = largest_base_pair(to_convert)
+      quotient, remainder = to_convert.divmod(biggest_divisor)
+      roman_numeral << (numeral * quotient)
+      to_convert = remainder
     end
     roman_numeral
   end
+
+  private
+
+  def largest_base_pair(to_convert)
+    DECIMAL_TO_ROMAN.select do |key, value| 
+      key <= to_convert
+    end.max
+  end
 end
-
-
-
-# 2839 => MMDCCCXXXIX
-# RomanNumeral.new(2839).to_roman == 'MMDCCCXXXIX'
-RomanNumeral.new(1).to_roman == 'I'
-# RomanNumeral.new(4).to_roman == 'IV'
-
