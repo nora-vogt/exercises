@@ -65,11 +65,11 @@ class Octal
 
   def to_decimal
     return 0 unless valid?
-    decimal = 0
+    sum = 0
     @octal.to_i.digits.each_with_index do |digit, exponent|
-      decimal += (digit * (8 ** exponent))
+      sum += (digit * (8 ** exponent))
     end
-    decimal
+    sum
   end
 
   private
@@ -87,5 +87,4 @@ Basically the same - except:
   - calls method valid_octal? and explicitly passes number (the getter for @number) as an argument. Since the octal string is already saved as @number, and #to_decimal is an instance method, I don't think we actually need to explicilty pass number like this.
   - Valid number check - use String#=~  num.chars.all? {|n| n =~ /[0-7]/}
   - Renamed the block parameter "index" on line 69 to "exponent" for clarity
-
 =end
