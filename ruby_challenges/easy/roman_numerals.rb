@@ -9,37 +9,7 @@ RULES:
 
 - placing a smaller number in front of a larger number means subtraction
 
-1-3 => I
-4 => IV
-5 => V
-6-8 => VI, VII, VIII
-9 => IX
-10 => X
-
 EXAMPLES:
- 1  => I
-10  => X
- 7  => VII
-
-1990 => MCMXC
-1000=M
-900=CM
-90=XC
-
-2008 => MMVIII
-2000=MM
-8=VIII
-
-LOOKING FOR PATERN - UP TO 3000:
-
-1-10
-I V X
-
-2000 - MM
-800 - (hash[tens][1]) + (hash[tens] * (8-5)) +    DCCC
-30 -        XXX
-9 -         IX
-
 thousands: M 
 hundreds: C D M
 tens: X L C
@@ -67,8 +37,8 @@ base values - conversion hash
 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1
 
 find largest base
-number: 2839
-number: 839
+number: 2839 - 1000
+number: 839 - 500
 
 DATA STRUCTURES:
 start: integer
