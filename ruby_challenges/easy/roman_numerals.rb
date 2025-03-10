@@ -55,16 +55,14 @@ ALGO
 - set roman_string = ''
 - set number_to_convert = @number
 
-loop while remainder > 0
+loop while number_to_convert > 0
   - determine the biggest divisor and associated roman numeral
     - select k/v pairs in DECIMAL_TO_ROMAN where key is less than equal to number_to_convert (#select)
     - select the pair with largest key (#max)
     - assign key to biggest_divisor, value to numeral
-
-  - get roman numeral associated with that key in hash, set to current_numeral
   - calculate quotient and remainder of dividing that number - [Q, R]
   - numeral * quotient, add to result string
-  - set remainder to R
+  - set number_to_convert to remainder
 
 =end
 
