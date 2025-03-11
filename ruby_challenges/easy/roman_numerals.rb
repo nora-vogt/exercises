@@ -53,21 +53,23 @@ ALGO
 
 # to_roman
 - set roman_string = ''
-- set number_to_convert = @number
+- set number_decimal = @number
 
-loop while number_to_convert > 0
-  - determine the biggest divisor and associated roman numeral
-    - select k/v pairs in DECIMAL_TO_ROMAN where key is less than equal to number_to_convert (#select)
+loop while current number > 0
+- find the largest key in DECIMAL_TO_ROMAN that can be divided into current number
+    - select k/v pairs in DECIMAL_TO_ROMAN where key is less than equal to current number (#select)
     - select the pair with largest key (#max)
-    - assign key to biggest_divisor, value to numeral
-  - calculate quotient and remainder of dividing that number - [Q, R]
-  - numeral * quotient, add to result string
-  - set number_to_convert to remainder
-
+  - assign key to largest_divisor, value to numeral
+- divide the current number by the largest_divisor
+  - assign quotient to multiplier, remainder to remainder
+- multiply numeral string by multiplier, push to roman_numeral string
+- reassign current number to remainder
 =end
 
 
 class RomanNumeral
+  attr_reader :number
+
   DECIMAL_TO_ROMAN = { 
     1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 
     100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 
@@ -75,30 +77,22 @@ class RomanNumeral
     1 => 'I'
   }
 
-  attr_reader :number
-
   def initialize(number)
     @number = number
   end
 
   def to_roman
     roman_numeral = ''
-    to_convert = @number
+    working_number = number
 
-    while to_convert > 0 # works with DECIMAL_TO_ROMAN in any order
-      biggest_divisor, numeral = largest_base_pair(to_convert)
-      quotient, remainder = to_convert.divmod(biggest_divisor)
-      roman_numeral << (numeral * quotient)
-      to_convert = remainder
+    while working_number > 0
+      largest_divisor, numeral = DECIMAL_TO_ROMAN.select do |decimal, _| 
+        decimal <= working_number
+      end.max
+      multiplier, remainder = working_number.divmod(largest_divisor)
+      roman_numeral << (numeral * multiplier)
+      working_number = remainder
     end
     roman_numeral
-  end
-
-  private
-
-  def largest_base_pair(to_convert)
-    DECIMAL_TO_ROMAN.select do |key, value| 
-      key <= to_convert
-    end.max
   end
 end
