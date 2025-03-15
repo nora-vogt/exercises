@@ -8,6 +8,21 @@ RULES:
 - All robot names must be unique
 - Can reset robot name - sets name to -- nil? empty string?
 
+# QUESTIONS
+- How are the seeds working in the test cases?
+  - Calling Kernel.srand and passing a seed sets the seed value to be used for Ruby's pseudorandom number generator (PNRG). Essentially, this means that Ruby will generate the same random sequence of numbers each time the code is run, with the sequence being based on the seed. This is helpful to create predictable results in testing.
+
+- different name and initial name constants are set to a 4-digit integer
+
+NAME_REGEXP = /^[A-Z]{2}\d{3}$/
+^ -> start of line
+[A-Z] -> any single character in range A-Z
+{2} -> exactly 2 of the previous character
+\d -> any digit
+{3} -> exactly 3 (digits)
+$ -> end of line
+
+
 # EXAMPLES
   #name returns a string like RX837 or BC811
 
