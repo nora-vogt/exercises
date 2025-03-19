@@ -37,7 +37,6 @@ meetup.day('Monday', 'first') => Date.civil(2013, 3, 4)
 Meetup.new(2016, 11)
 meetup.day('Tuesday', 'teenth') => Date.civil(2016, 11, 15), 
 
-
 Meetup.new(2016, 2)
 meetup.day('Sunday', 'fifth') =>  nil
 
@@ -109,83 +108,68 @@ teenth => [13..19]
   - get the day of the object (integer)
   - if (13..19) includes the day, stop iterating and return that date object
 - otherwise return nil
-
-
-case descriptor
 =end
 
 # First Draft
-# class Meetup
-#   attr_reader :year, :month
+class Meetup
+  attr_reader :year, :month
 
-#   def initialize(year, month)
-#     @year = year
-#     @month = month
-#   end
+  def initialize(year, month)
+    @year = year
+    @month = month
+  end
 
-#   def day(weekday, schedule)
-#     weekdays = select_weekdays(weekday.downcase)
-#     day = find_date(weekdays, schedule.downcase)
-#     day.nil? ? day : Date.civil(@year, @month, day)
-#   end
+  def day(weekday, schedule)
+    weekdays = select_weekdays(weekday.downcase)
+    day = find_date(weekdays, schedule.downcase)
+    day.nil? ? day : Date.civil(@year, @month, day)
+  end
 
-#   private
+  private
 
-#   def select_weekdays(weekday)
-#     current_month = (Date.new(year, month)..Date.new(year, month, -1)) # can pass -1 as last day of month
-#     #current_month = (Date.new(year, month)...Date.new(year, month).next_month)
-#     current_month.select do |date|
-#       case weekday
-#       when 'monday'    then date.monday?
-#       when 'tuesday'   then date.tuesday?
-#       when 'wednesday' then date.wednesday?
-#       when 'thursday'  then date.thursday?
-#       when 'friday'    then date.friday?
-#       when 'saturday'  then date.saturday?
-#       when 'sunday'    then date.sunday?
-#       end
-#     end
-#   end
+  def select_weekdays(weekday)
+    current_month = (Date.new(year, month)..Date.new(year, month, -1)) # can pass -1 as last day of month
+    #current_month = (Date.new(year, month)...Date.new(year, month).next_month)
+    current_month.select do |date|
+      case weekday
+      when 'monday'    then date.monday?
+      when 'tuesday'   then date.tuesday?
+      when 'wednesday' then date.wednesday?
+      when 'thursday'  then date.thursday?
+      when 'friday'    then date.friday?
+      when 'saturday'  then date.saturday?
+      when 'sunday'    then date.sunday?
+      end
+    end
+  end
 
-#   def find_date(weekdays, schedule)
-#     date = case schedule
-#       when 'first'  then weekdays[0]
-#       when 'second' then weekdays[1]
-#       when 'third'  then weekdays[2]
-#       when 'fourth' then weekdays[3]
-#       when 'fifth'  then weekdays[4]
-#       when 'last'   then weekdays[-1]
-#       when 'teenth' then find_teenth(weekdays)
-#       end
+  def find_date(weekdays, schedule)
+    date = case schedule
+      when 'first'  then weekdays[0]
+      when 'second' then weekdays[1]
+      when 'third'  then weekdays[2]
+      when 'fourth' then weekdays[3]
+      when 'fifth'  then weekdays[4]
+      when 'last'   then weekdays[-1]
+      when 'teenth' then find_teenth(weekdays)
+      end
   
-#     date ? date.day : nil
-#   end
+    date ? date.day : nil
+  end
 
-#   def find_teenth(dates)
-#     dates.find { |date| /(13|14|15|16|17|18|19)/ =~ date.day.to_s }
-#   end
-# end
+  def find_teenth(dates)
+    dates.find { |date| /(13|14|15|16|17|18|19)/ =~ date.day.to_s }
+  end
+end
 
 # Meetup.new(2013, 3).day('Monday', 'first')
 # Meetup.new(2025, 3).day('ThurSDAy', 'TEENTH')
 # p Meetup.new(2015, 10).day('Wednesday', 'fifth') == nil
 
-
 =begin
 # Refactoring ideas
-- Convert the weekday string to a symbol with ? appended, use as a method to find the correct weekday
-- descriptors as a constant (array, hash?) to avoid a second case statement
-
-
-
-- array of matching weekdays
-[first second third fourth fifth last]
-
-case schedule
-when teenth ->
-when last -> 
-else weekdays[ORDINALS]
-
+- Convert the weekday string to a symbol with ? appended, use as a method name to find the correct weekday
+- schedule as a constant (array, hash?) to avoid a second case statement
 
 Make SCHEDULE_INDEX hash
 { 'first' => 0,
@@ -195,23 +179,20 @@ Make SCHEDULE_INDEX hash
   'fifth' => 4
   'last' => -1
 }
+
 #day
 - is redundant. #find_date already returns a Date object or nil, just use the return value of that method.
 
-# find day
-- check if schedule
-  - is teenth, then
-  - otherwise:
-    - get value for corresponding key in SCHEDULE_INDEX hash
-  - get element in weekdays array at index
+# find_day
+- check if schedule is teenth, if yes: call find_teenth
+  - otherwise: get value for corresponding key in SCHEDULE_INDEX hash
+  - get element in weekdays array at that index
 
 # select_weekdays
 - convert weekday string into a symbol ending with ?
   - append ? to string, convert to symbol
-- use as method to select dates with a matching weekday
+- use symbol as method name with & to select dates with a matching weekday
 =end
-
-
 class Meetup
   attr_reader :year, :month
 
@@ -237,9 +218,9 @@ class Meetup
   private
 
   def select_weekdays(weekday)
+    weekday_sym = (weekday << '?').to_sym
     current_month = (Date.new(year, month)..Date.new(year, month, -1))
-    weekday = (weekday << '?').to_sym
-    current_month.select(&weekday)
+    current_month.select(&weekday_sym)
   end
 
   def find_date(weekdays, schedule)
@@ -253,3 +234,88 @@ class Meetup
     dates.find { |date| /1[3-9]/ =~ date.day.to_s }
   end
 end
+
+=begin
+# LS Solution
+- Determine the earliest possible day of the month that a week can start on, create a hash with schedule string keys / corresponding integer day values
+- determine the first/last possible days for the meetup
+- Check each possible day, compare to given weekday
+
+- create SCHEDULE_START_DAY hash
+  - keys are schedule strings, values are integer earliest possible day of month (except for last, which references nil)
+
+# constructor 
+  - set @year and @month
+  - use -1 with Date.civil to find the last day of the month (#day) -> returns an integer, set to @days_in_month
+
+# day - takes weekday string, schedule string
+- downcase both arg strings
+- find the first possible day in month that could meet the target schedule 
+  - #first_day_to_search
+- find the last possible day in month that could meet target schedule
+  - take whichever value is lowest: first_possible_day + 6, or value of @days_in_month
+    - this handles scenario where there is a fifth weekday. 5th week starts on the 29th, so can't add 6 more days to make a full week in same month.
+- iterate through range of integers, first_possible_day to last_possible_day
+  - create a new Date object, using current day as day value
+  - stop iterating and return the new Date obj if that date matches the given weekday
+  - #day_of_week_is?
+
+# first_day_to_search - takes the schedule descriptor string
+  - if the schedule is a key in SCHEDULE_START_DAY hash, return value
+  - otherwise (schedule is 'last'), return @days_in_month - 6 to get first day of last week of month
+
+#day_of_week_is? - takes a date obj, weekday string
+  - case statement for weekday string
+  - check if any of the `-day?` methods returns true for that date
+=end
+
+class Meetup
+  SCHEDULE_START_DAY = {
+    'first' => 1,
+    'second' => 8,
+    'third' => 15,
+    'fourth' => 22,
+    'fifth' => 29,
+    'teenth' => 13,
+    'last' => nil
+  }.freeze
+
+  def initialize(year, month)
+    @year = year
+    @month = month
+    @days_in_month = Date.civil(@year, @month, -1).day
+  end
+
+  def day(weekday, schedule)
+    weekday = weekday.downcase
+    schedule = schedule.downcase
+
+    first_possible_day = first_day_to_search(schedule)
+    last_possible_day = [first_possible_day + 6, @days_in_month].min
+
+    (first_possible_day..last_possible_day).find do |day|
+      date = Date.civil(@year, @month, day)
+      break date if day_of_week_is?(date, weekday)
+    end
+  end
+
+  private
+
+  def first_day_to_search(schedule)
+    SCHEDULE_START_DAY[schedule] || (@days_in_month - 6)
+  end
+
+  def day_of_week_is?(date, weekday) # rubocop:disable Metrics/CyclomaticComplexity
+    case weekday
+    when 'monday'    then date.monday?
+    when 'tuesday'   then date.tuesday?
+    when 'wednesday' then date.wednesday?
+    when 'thursday'  then date.thursday?
+    when 'friday'    then date.friday?
+    when 'saturday'  then date.saturday?
+    when 'sunday'    then date.sunday?
+    end
+  end
+end
+
+#p Meetup.new(2015, 11).day('Thursday', 'fifth')
