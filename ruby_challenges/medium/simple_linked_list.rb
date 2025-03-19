@@ -270,24 +270,19 @@ end
 class SimpleLinkedList
   attr_reader :head
 
-  def self.from_a(array)
-    list = SimpleLinkedList.new
-    return list if array.nil?
-    array.reverse.each do |value| 
-      element = Element.new(value)
-      list.push(value)
-    end
-    list
-  end
-
   def size
     counter = 0
     each { counter += 1 }
     counter
   end
 
+  def empty?
+    head.nil?
+  end
+
   def peek
-    head ? head.datum : nil
+    #head ? head.datum : nil
+    head.datum if head
   end
 
   def push(value)
@@ -296,10 +291,13 @@ class SimpleLinkedList
   end
 
   def pop
-    return nil if empty?
-    first_element = head
-    self.head = head.next
-    first_element.datum
+    # return nil if empty?
+    # first_element = head
+    # self.head = head.next
+    # first_element.datum
+    datum = peek
+    self.head = head.next unless head.nil? # can use conditional here instead
+    datum
   end
 
   def to_a
@@ -321,8 +319,11 @@ class SimpleLinkedList
     self
   end
 
-  def empty?
-    !head
+  def self.from_a(array)
+    list = SimpleLinkedList.new
+    return list if array.nil?
+    array.reverse.each { |value| list.push(value) }
+    list
   end
 
   private
