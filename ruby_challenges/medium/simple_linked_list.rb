@@ -48,7 +48,7 @@ LinkedList obj can be converted to/from an Array obj
 
 
 # ALGORITHM
-class Element
+Element
 #constructor - takes 2 values, value of element, next element(optional, default to nil)
 - assigns value to @datum
 - assigns next element to @next
@@ -60,9 +60,9 @@ class Element
 # next - returns next linked element
   - returns nil if element has no next element
 
-class SimpleLinkedList
+SimpleLinkedList
 # constructor
-- @elements - array?
+- @elements - array
 
 # size - returns # of elements in list
 
@@ -180,7 +180,7 @@ class SimpleLinkedList
 
 
 # ALGORITHM
-class Element
+Element
 #constructor - takes 2 values, value of element, next element(optional, default to nil)
 - assigns value to @datum
 - assigns next element to @next
@@ -192,9 +192,7 @@ class Element
 # next - returns next linked element
   - returns nil if element has no next element
 
-class SimpleLinkedList
-# constructor
-
+SimpleLinkedList
 # size - returns # of elements
   - create a counter
   - iterate through all elements in the list
