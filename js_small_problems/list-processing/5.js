@@ -39,13 +39,13 @@ OUTPUT: array of substrings
 // }
 
 // With reduce
-function leadingSubstrings(string) {
-  return [...string].reduce((substrings, letter, index, array) => {
-    // substrings.push(string.slice(0, index + 1));
-    substrings.push(array.slice(0, index + 1).join('')); // can do this way also
-    return substrings;
-  }, []);
-}
+// function leadingSubstrings(string) {
+//   return [...string].reduce((substrings, letter, index, array) => {
+//     // substrings.push(string.slice(0, index + 1));
+//     substrings.push(array.slice(0, index + 1).join('')); // can do this way also
+//     return substrings;
+//   }, []);
+// }
 
 // With map
 function leadingSubstrings(string) {
